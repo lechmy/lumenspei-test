@@ -1,0 +1,5 @@
+export enum PRODUCT_TYPE {
+  PACKAGE = "PACKAGE",
+  SERVICE = "SERVICE",
+  UNTYPED = "UNTYPED",
+}

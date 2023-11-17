@@ -1,0 +1,4 @@
+export enum STATUS {
+  ACTICE = "ACTIVE",
+  INACTIVE = "INACTIVE"
+}
