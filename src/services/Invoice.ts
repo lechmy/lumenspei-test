@@ -1,9 +1,14 @@
 import { AxiosPromise } from 'axios'
 import Axios from '../api'
 import { InvoiceDto } from '../types/dto/Invoice'
+import { InvoiceModel } from '../types/model/Invoice'
 
-export const getInvoices = (): Promise<InvoiceDto[]> => {
-  return Axios.get<InvoiceDto[]>('/v1/invoices').then((response) => response.data)
+export const getInvoices = (): Promise<InvoiceModel[]> => {
+  return Axios.get<InvoiceModel[]>('/v1/invoices').then((response) => response.data)
+}
+
+export const getInvoice = (id: string): Promise<InvoiceModel[]> => {
+  return Axios.get<InvoiceModel[]>(`/v1/invoices/${id}`).then((response) => response.data)
 }
 
 export const newInvoice = (data: InvoiceDto): AxiosPromise => {

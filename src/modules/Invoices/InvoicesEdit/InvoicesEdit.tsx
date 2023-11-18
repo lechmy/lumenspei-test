@@ -5,8 +5,7 @@ const InvoicesEdit: React.FC = () => {
   const { invoice, onSubmit } = useClientEdit()
 
   return(
-    <InvoicesDetails invoice={invoice} onSubmit={onSubmit} />
+    !!invoice && <InvoicesDetails canEdit invoice={invoice} onSubmit={onSubmit} />
   )
 }
-
 export default InvoicesEdit

@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { ChevronUpDownIcon, PencilSquareIcon, TrashIcon, UserPlusIcon } from '@heroicons/react/20/solid'
+import { BanknotesIcon, ChevronUpDownIcon, PencilSquareIcon, TrashIcon, UserPlusIcon } from '@heroicons/react/20/solid'
 import cx from 'classnames'
 import useClientList from "./useInvoicesList"
 import Button from '../../../components/Button/Button'
@@ -10,8 +10,8 @@ const ProductList: React.FC = () => {
     invoices,
     isLoading,
     itemCount,
-    selected,
-    setSelected,
+    perPageItemCount,
+    handlePerPageChange,
     handleCreateNew,
     handleEdit,
     handleDelete 
@@ -21,10 +21,11 @@ const ProductList: React.FC = () => {
     <section>
       <div className='flex justify-between items-center al my-4'>
         <Button className="ml-2" onClick={handleCreateNew}>
-          <UserPlusIcon className="h-5 w-5" aria-hidden="true" title="Add new Invoice"/>
+          <BanknotesIcon className="h-5 w-5" aria-hidden="true" title="Add new Invoice"/>
         </Button>
       </div>
-      {isLoading && (
+      
+      {!isLoading && (
         <ul role="list" className="divide-y divide-gray-100 mt-4">
           {invoices.map((invoice) => (
             <li key={invoice.id} className="flex justify-between flex-col md:flex-row gap-x-6 py-5">
@@ -55,14 +56,14 @@ const ProductList: React.FC = () => {
         <div>
           {/* paggination */}
         </div>
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={itemCount} onChange={handlePerPageChange}>
           {({ open }) => (
             <div className="flex items-center">
               <Listbox.Label className="block mr-2 text-sm font-medium leading-6 text-gray-900">Items per page: </Listbox.Label>
               <div className="relative w-24">
                 <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
                   <span className="flex items-center">
-                    <span className="ml-3 block truncate">{selected}</span>
+                    <span className="ml-3 block truncate">{itemCount}</span>
                   </span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                     <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -77,7 +78,7 @@ const ProductList: React.FC = () => {
                   leaveTo="opacity-0"
                 >
                   <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                    {itemCount.map((item, index) => (
+                    {perPageItemCount.map((item, index) => (
                       <Listbox.Option
                         key={index}
                         className={({ active }) =>

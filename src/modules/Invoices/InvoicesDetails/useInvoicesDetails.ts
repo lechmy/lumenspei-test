@@ -1,26 +1,39 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { InvoiceDto } from "../../../types/dto/Invoice"
+import { useNavigate, useParams } from "react-router-dom"
 import { InvoicesDetailsProps } from "../../../types/props/InvoicesDetailsProps"
 import { emptyInvoice } from "../../../constants/invoice"
 import { INVOICE_STATUS, PAYMENT_METHOD } from "../../../enums/Invoices"
+import { InvoiceModel } from "../../../types/model/Invoice"
+import { deleteInvoice } from "../../../services/Invoice"
+import { useMutation } from "react-query"
 
 const useInvoicesDetails = (props: InvoicesDetailsProps) => {
-  const { invoice, onSubmit } = props
+  const { canEdit, invoice, onSubmit } = props
   const invoiceStatus = Object.values(INVOICE_STATUS)
   const paymentMethod = Object.values(PAYMENT_METHOD)
 
   const navigate = useNavigate()
+  const { id } = useParams ()
 
-  const [curentInvoice, setCurentInvoice] = useState<InvoiceDto>(invoice || emptyInvoice)
+  const [curentInvoice, setCurentInvoice] = useState<InvoiceModel>(invoice || emptyInvoice)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const invoiceMutation = useMutation({
+    mutationFn: (id: string) => deleteInvoice(id),
+    onSuccess: () => {
+      navigate('/invoice')
+    }
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const updatedValue = {[e.target.name]:e.target.value};
-
     setCurentInvoice(curentInvoice => ({
       ...curentInvoice,
       ...updatedValue
     }));
+  }
+
+  const handleDelete = (invoice: InvoiceModel) => {
+    invoiceMutation.mutate(invoice.id || '')
   }
 
   const handleCancel = () => {
@@ -28,11 +41,13 @@ const useInvoicesDetails = (props: InvoicesDetailsProps) => {
   }
 
   return {
+    canEdit,
     invoice: curentInvoice,
     invoiceStatus,
     paymentMethod,
     handleChange,
     handleCancel,
+    handleDelete,
     onSubmit,
   }
 }

@@ -1,16 +1,18 @@
-import { InvoicesDetailsProps } from "../../../types/props/InvoicesDetailsProps"
-import Input from "../../../components/Input/Input"
-import Textarea from "../../../components/Textarea/Textarea"
-import Button from "../../../components/Button/Button"
-import useInvoicesDetails from "./useInvoicesDetails"
+import { InvoicesDetailsProps } from '../../../types/props/InvoicesDetailsProps'
+import Input from '../../../components/Input/Input'
+import Textarea from '../../../components/Textarea/Textarea'
+import Button from '../../../components/Button/Button'
+import useInvoicesDetails from './useInvoicesDetails'
 
 const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
   const {
+    canEdit,
     invoice,
     invoiceStatus,
     paymentMethod,
     handleChange,
     handleCancel,
+    handleDelete,
     onSubmit,
   } = useInvoicesDetails(props)
 
@@ -19,10 +21,15 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
       <form onSubmit={onSubmit}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-6">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">Invoice Information</h2>
+            <div className="flex justify-between">
+              <h2 className="text-base font-semibold leading-7 text-gray-900">Invoice Information</h2>
+              {canEdit && <Button type="button" className="bg-red-400 hover:bg-red-600" onClick={() => handleDelete(invoice)}>Delete</Button>}
+            </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-4">
+              <Input name="id" className="hidden" value={invoice?.id} onChange={() => {}} />
+              <Input name="itemsId" className="hidden" value={invoice?.invoiceItems.map(item => item.id)} onChange={() => {}} />
+              <div className="sm:col-span-2">
                 <label htmlFor="designation" className="block text-sm font-medium leading-6 text-gray-900">
                   Invoice designation
                 </label>
@@ -38,7 +45,7 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-4">
                 <label htmlFor="clientId" className="block text-sm font-medium leading-6 text-gray-900">
                   Client ID
                 </label>
@@ -47,7 +54,6 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
                     name="clientId"
                     id="clientId"
                     type="text"
-                    required
                     placeholder="client ID"
                     value={invoice?.clientId}
                     onChange={(e) => handleChange(e)}
@@ -121,12 +127,14 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
 
               <div className="sm:col-span-2">
                 <label htmlFor="status" className="block text-sm font-medium leading-6 text-gray-900">
-                  Invoice status
+                  Invoice status *
                 </label>
                 <div className="mt-2">
                   <select
                     id="status"
                     name="status"
+                    required
+                    onChange={(e) => handleChange(e)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
                     {invoiceStatus.map(status => {
@@ -138,12 +146,14 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
 
               <div className="sm:col-span-2">
                 <label htmlFor="paymentMethod" className="block text-sm font-medium leading-6 text-gray-900">
-                  Payment method
+                  Payment method *
                 </label>
                 <div className="mt-2">
                   <select
                     id="paymentMethod"
                     name="paymentMethod"
+                    required
+                    onChange={(e) => handleChange(e)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
                     {paymentMethod.map(method => {

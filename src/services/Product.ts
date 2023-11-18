@@ -13,3 +13,7 @@ export const newProduct = (data: ProductDto): AxiosPromise => {
 export const editProduct = (data: ProductDto): AxiosPromise => {
   return Axios.put<ProductDto>('/v1/products', data)
 }
+
+export const deleteProduct = (id: string): AxiosPromise => {
+  return Axios.put<ProductDto>(`/v1/products/${id}`)
+}

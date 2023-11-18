@@ -12,7 +12,7 @@ const useClientEdit = () => {
 
   // const query = useQuery(['editClient'], () => getClient(id).then(data => setClient(data)))
 
-  const newClientMutation = useMutation({
+  const clientMutation = useMutation({
     mutationFn: (formData: any) => {
       return editClient(formData)
     },
@@ -20,7 +20,7 @@ const useClientEdit = () => {
 
   const onSubmit = (event: any) => {
     event.preventDefault()
-    newClientMutation.mutate(new FormData(event.target))
+    clientMutation.mutate(new FormData(event.target))
   }
 
   return {

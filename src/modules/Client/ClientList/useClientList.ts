@@ -5,22 +5,24 @@ import { getFilteredClients } from '../../../services/Client';
 import { GetUsersDto } from '../../../types/dto/User';
 import { UserDto } from '../../../types/dto/User';
 import { defaultClient } from '../../../constants/user';
+import { perPageItemCount } from '../../../constants/common';
 
 const useClientList = () => {
-  const itemCount: number[] = [5, 10, 20, 50]
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState<number>(itemCount[0])
+  const [itemCount, setItemCount] = useState<number>(perPageItemCount[0])
   const [clients, setClients] = useState<UserDto[]>([defaultClient])
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const parameters: GetUsersDto = {
     sortOrder: 1,
-    pageSize:	selected,
+    pageSize:	itemCount,
     pageNumber:	1,
   }
 
-  const query = useQuery(['clients'], () => getFilteredClients(parameters).then(data => setClients(data)))
+  const query = useQuery(['clients'], () => getFilteredClients(parameters), {
+    onSuccess: (res) => setClients(res.data.slice(0, itemCount))
+  })
   const { data, isLoading } = query
 
   const handleSearch = (value: string) => {
@@ -41,16 +43,21 @@ const useClientList = () => {
     navigate(`/client/${client.id}/edit`);
   }
 
-  const handleDelete = (client: any) => {
-    console.log(client)
+  const handleDelete = (id: srtring) => {
+    console.log(id)
+  }
+
+  const handlePerPageChange = (value: number) => {
+    setClients(!!data ? data.data.slice(0, value) : [])
+    setItemCount(value)
   }
 
   return {
     clients,
     isLoading,
     itemCount,
-    selected,
-    setSelected,
+    perPageItemCount,
+    handlePerPageChange,
     searchQuery,
     setSearchQuery,
     handleSearch,

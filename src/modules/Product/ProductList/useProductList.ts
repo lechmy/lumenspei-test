@@ -3,23 +3,25 @@ import { useQuery } from 'react-query'
 import { useNavigate } from 'react-router-dom';
 import { GetProductsDto, ProductDto } from '../../../types/dto/Products';
 import { getFilteredProducts } from '../../../services/Product';
-import { itemCount } from '../../../constants/common';
+import { perPageItemCount } from '../../../constants/common';
 import { defaultProduct } from '../../../constants/product';
 
 const useProductList = () => {
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState<number>(itemCount[0])
+  const [itemCount, setItemCount] = useState<number>(perPageItemCount[0])
   const [products, setProducts] = useState<ProductDto[]>([defaultProduct])
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const parameters: GetProductsDto = {
     sortOrder: 1,
-    pageSize:	selected,
+    pageSize:	itemCount,
     pageNumber:	1,
   }
 
-  const query = useQuery(['products'], () => getFilteredProducts(parameters).then(data => setProducts(data)))
+  const query = useQuery(['products'], () => getFilteredProducts(parameters), {
+    onSuccess: (res: any) => setProducts(res.data.slice(0, itemCount))
+  })
   const { data, isLoading } = query
 
   const handleSearch = (value: string) => {
@@ -44,14 +46,20 @@ const useProductList = () => {
     console.log(product)
   }
 
+  const handlePerPageChange = (value: number) => {
+    setProducts(!!data ? data.data.slice(0, value) : [])
+    setItemCount(value)
+  }
+
   return {
     products,
     isLoading,
     itemCount,
-    selected,
-    setSelected,
+    perPageItemCount,
+    setItemCount,
     searchQuery,
     setSearchQuery,
+    handlePerPageChange,
     handleSearch,
     handleClearSearch,
     handleCreateNew,

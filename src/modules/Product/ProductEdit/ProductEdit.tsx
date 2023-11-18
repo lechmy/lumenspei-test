@@ -5,7 +5,7 @@ const ProductEdit: React.FC = () => {
   const { product, onSubmit } = useProductEdit()
 
   return(
-    <ProductDetails product={product} onSubmit={onSubmit} />
+    <ProductDetails canEdit product={product} onSubmit={onSubmit} />
   )
 }
 

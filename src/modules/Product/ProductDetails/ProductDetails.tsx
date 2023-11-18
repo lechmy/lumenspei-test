@@ -6,10 +6,12 @@ import useProductDetails from "./useProductDetails"
 
 const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
   const {
+    canEdit,
     product,
     productType,
     handleChange,
     handleCancel,
+    handleDelete,
     onSubmit,
   } = useProductDetails(props)
 
@@ -18,9 +20,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
       <form onSubmit={onSubmit}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-6">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">Product Information</h2>
-
+            <div className="flex justify-between">
+              <h2 className="text-base font-semibold leading-7 text-gray-900">Product Information</h2>
+              {canEdit && <Button type="button" className="bg-red-400 hover:bg-red-600" onClick={() => handleDelete(product)}>Delete</Button>}
+            </div>
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <Input name="id" className="hidden" value={product?.id} onChange={() => {}} />
               <div className="sm:col-span-4">
                 <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                   Product Name *

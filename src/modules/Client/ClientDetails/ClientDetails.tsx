@@ -22,6 +22,7 @@ const ClientDetails: React.FC<ClientDetailsProps> = (props) => {
             <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <Input name="id" className="hidden" value={client?.id} onChange={() => {}} />
               <div className="sm:col-span-3">
                 <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">
                   First name *

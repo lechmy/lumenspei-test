@@ -1,6 +1,7 @@
-import { InvoiceDto } from '../dto/Invoice'
+import { InvoiceModel } from '../model/Invoice'
 
 export interface InvoicesDetailsProps {
-  invoice?: InvoiceDto
+  canEdit?: boolean
+  invoice?: InvoiceModel | null
   onSubmit?: (ev: any) => void
 }
