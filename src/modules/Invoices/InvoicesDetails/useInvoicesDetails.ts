@@ -32,6 +32,13 @@ const useInvoicesDetails = (props: InvoicesDetailsProps) => {
     }));
   }
 
+  const handleDateChange = (key: string, value: string): void => {
+    setCurentInvoice(curentInvoice => ({
+      ...curentInvoice,
+      ...{[key]: value}
+    }))
+  }
+
   const handleDelete = (invoice: InvoiceModel) => {
     invoiceMutation.mutate(invoice.id || '')
   }
@@ -45,6 +52,7 @@ const useInvoicesDetails = (props: InvoicesDetailsProps) => {
     invoice: curentInvoice,
     invoiceStatus,
     paymentMethod,
+    handleDateChange,
     handleChange,
     handleCancel,
     handleDelete,

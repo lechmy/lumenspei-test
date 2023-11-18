@@ -6,6 +6,7 @@ import { GetUsersDto } from '../../../types/dto/User';
 import { UserDto } from '../../../types/dto/User';
 import { defaultClient } from '../../../constants/user';
 import { perPageItemCount } from '../../../constants/common';
+import { USER_ROLE } from '../../../enums/user';
 
 const useClientList = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ const useClientList = () => {
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const parameters: GetUsersDto = {
+    name: 'a',
+    userRole: USER_ROLE.ADMIN,
+    sortItem: 'a',
     sortOrder: 1,
     pageSize:	itemCount,
     pageNumber:	1,
