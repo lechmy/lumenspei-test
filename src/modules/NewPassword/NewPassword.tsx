@@ -1,6 +1,6 @@
-import Button from "../../components/Button/Button"
-import Input from "../../components/Input/Input"
-import useNewPassword from "./useNewPassword"
+import Button from '../../components/Button/Button'
+import Input from '../../components/Input/Input'
+import useNewPassword from './useNewPassword'
 
 const ResetPassword: React.FC = () => {
   const { newPassword, setNewPassword, repeatedPassword, setRepeatedPassword, handleResetPassword } = useNewPassword()

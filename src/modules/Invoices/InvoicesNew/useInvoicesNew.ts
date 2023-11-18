@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom"
-import { useMutation } from "react-query"
-import { newInvoice } from "../../../services/Invoice"
-import { parseFormData } from "../../../utility/form"
-import { invoiceItemID } from "../../../constants/invoice"
+import { useNavigate } from 'react-router-dom'
+import { useMutation } from 'react-query'
+import { newInvoice } from '../../../services/Invoice'
+import { parseFormData } from '../../../utility/form'
+import { invoiceItemID } from '../../../constants/invoice'
 
 const useInvoicesNew = () => {
   const navigate = useNavigate()

@@ -1,14 +1,10 @@
-import { useState } from "react"
-import { useAuth } from "../../providers/Auth"
+import { useAuth } from '../../providers/Auth'
 
 const useHeader = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { user, logout } = useAuth()
+  const { logout } = useAuth()
   
   return {
-    mobileMenuOpen,
-    logout,
-    setMobileMenuOpen
+    logout
   }
 }
   

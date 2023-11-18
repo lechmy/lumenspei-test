@@ -1,6 +1,5 @@
-import { useMutation } from "react-query"
-import { newClient } from "../../../services/Client"
-import { FormEvent } from "react"
+import { useMutation } from 'react-query'
+import { newClient } from '../../../services/Client'
 
 const useClientNew = () => {
   const newClientMutation = useMutation({
@@ -14,13 +13,6 @@ const useClientNew = () => {
     newClientMutation.mutate(new FormData(event.target))
   }
 
-  // const newClientMutation = useMutation({
-  //   mutationFn: (event) => {
-  //     console.log('nesto')
-  //     // event.preventDefault()
-  //     return createNewClient(data)
-  //   },
-  // })
   return {
     onSubmit
   }

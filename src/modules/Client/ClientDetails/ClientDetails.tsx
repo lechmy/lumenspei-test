@@ -1,8 +1,8 @@
-import Input from "../../../components/Input/Input"
-import Textarea from "../../../components/Textarea/Textarea"
-import useClientDetails from "./useClientDetails"
-import { ClientDetailsProps } from "../../../types/props/ClientDetailsProps"
-import Button from "../../../components/Button/Button"
+import Input from '../../../components/Input/Input'
+import Textarea from '../../../components/Textarea/Textarea'
+import useClientDetails from './useClientDetails'
+import { ClientDetailsProps } from '../../../types/props/ClientDetailsProps'
+import Button from '../../../components/Button/Button'
 
 const ClientDetails: React.FC<ClientDetailsProps> = (props) => {
   const {

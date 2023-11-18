@@ -1,8 +1,8 @@
-import { ProductDetailsProps } from "../../../types/props/ProductDetailsProps"
-import Input from "../../../components/Input/Input"
-import Textarea from "../../../components/Textarea/Textarea"
-import Button from "../../../components/Button/Button"
-import useProductDetails from "./useProductDetails"
+import { ProductDetailsProps } from '../../../types/props/ProductDetailsProps'
+import Input from '../../../components/Input/Input'
+import Textarea from '../../../components/Textarea/Textarea'
+import Button from '../../../components/Button/Button'
+import useProductDetails from './useProductDetails'
 
 const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
   const {

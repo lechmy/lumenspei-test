@@ -1,5 +1,5 @@
-import ClientDetails from "../ClientDetails/ClientDetails"
-import useClientNew from "./useClientNew"
+import ClientDetails from '../ClientDetails/ClientDetails'
+import useClientNew from './useClientNew'
 
 const ClientNew: React.FC = () => {
   const { onSubmit } = useClientNew()

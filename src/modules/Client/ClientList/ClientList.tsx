@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { ChevronUpDownIcon, PencilSquareIcon, TrashIcon, UserPlusIcon } from '@heroicons/react/20/solid'
 import cx from 'classnames'
-import useClientList from "./useClientList"
 import Button from '../../../components/Button/Button'
 import Input from '../../../components/Input/Input'
+import useClientList from './useClientList'
 
 const ClientList: React.FC = () => {
   const { 
@@ -51,7 +51,7 @@ const ClientList: React.FC = () => {
                 <Button className="ml-2" onClick={() => handleEdit(client)}>
                   <PencilSquareIcon className="h-5 w-5" aria-hidden="true" />
                 </Button>
-                <Button className="ml-2" onClick={() => handleDelete(client.id)}>
+                <Button className="ml-2" onClick={() => handleDelete(client.id as string)}>
                   <TrashIcon className="h-5 w-5" aria-hidden="true" />
                 </Button>
               </div>

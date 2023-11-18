@@ -1,5 +1,5 @@
 export interface ProtectedRouteProps {
   children?: React.ReactElement
-  isAllowed: boolean;
-  redirectPath?: string;
-};
+  isAllowed: boolean
+  redirectPath?: string
+}

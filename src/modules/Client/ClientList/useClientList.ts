@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
-import { useNavigate } from 'react-router-dom';
-import { getFilteredClients } from '../../../services/Client';
-import { GetUsersDto } from '../../../types/dto/User';
-import { UserDto } from '../../../types/dto/User';
-import { defaultClient } from '../../../constants/user';
-import { perPageItemCount } from '../../../constants/common';
-import { USER_ROLE } from '../../../enums/user';
+import { useNavigate } from 'react-router-dom'
+import { getFilteredClients } from '../../../services/Client'
+import { GetUsersDto } from '../../../types/dto/User'
+import { UserDto } from '../../../types/dto/User'
+import { defaultClient } from '../../../constants/user'
+import { perPageItemCount } from '../../../constants/common'
+import { USER_ROLE } from '../../../enums/user'
 
 const useClientList = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [itemCount, setItemCount] = useState<number>(perPageItemCount[0])
   const [clients, setClients] = useState<UserDto[]>([defaultClient])
@@ -25,6 +25,7 @@ const useClientList = () => {
   }
 
   const query = useQuery(['clients'], () => getFilteredClients(parameters), {
+    // @ts-ignore
     onSuccess: (res) => setClients(res.data.slice(0, itemCount))
   })
   const { data, isLoading } = query
@@ -40,18 +41,19 @@ const useClientList = () => {
   }
 
   const handleCreateNew = () => {
-    navigate('/client/new');
+    navigate('/client/new')
   }
 
   const handleEdit = (client: any) => {
-    navigate(`/client/${client.id}/edit`);
+    navigate(`/client/${client.id}/edit`)
   }
 
-  const handleDelete = (id: srtring) => {
-    console.log(id)
+  const handleDelete = (id: string) => {
+    // TO DO
   }
 
   const handlePerPageChange = (value: number) => {
+    // @ts-ignore
     setClients(!!data ? data.data.slice(0, value) : [])
     setItemCount(value)
   }

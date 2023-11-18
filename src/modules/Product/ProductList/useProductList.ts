@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
-import { useNavigate } from 'react-router-dom';
-import { GetProductsDto, ProductDto } from '../../../types/dto/Products';
-import { getFilteredProducts } from '../../../services/Product';
-import { perPageItemCount } from '../../../constants/common';
-import { defaultProduct } from '../../../constants/product';
+import { useNavigate } from 'react-router-dom'
+import { GetProductsDto, ProductDto } from '../../../types/dto/Products'
+import { getFilteredProducts } from '../../../services/Product'
+import { perPageItemCount } from '../../../constants/common'
+import { defaultProduct } from '../../../constants/product'
 
 const useProductList = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [itemCount, setItemCount] = useState<number>(perPageItemCount[0])
   const [products, setProducts] = useState<ProductDto[]>([defaultProduct])
@@ -35,15 +35,15 @@ const useProductList = () => {
   }
 
   const handleCreateNew = () => {
-    navigate('/product/new');
+    navigate('/product/new')
   }
 
   const handleEdit = (product: any) => {
-    navigate(`/product/${product.id}/edit`);
+    navigate(`/product/${product.id}/edit`)
   }
 
   const handleDelete = (product: any) => {
-    console.log(product)
+    // TO DO
   }
 
   const handlePerPageChange = (value: number) => {

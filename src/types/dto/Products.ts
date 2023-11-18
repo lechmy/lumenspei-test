@@ -1,4 +1,4 @@
-import { PRODUCT_TYPE } from "../../enums/product";
+import { PRODUCT_TYPE } from '../../enums/product'
 
 export interface ProductDto {
   id?: string,

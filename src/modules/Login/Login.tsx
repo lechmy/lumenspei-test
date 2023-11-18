@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import Button from "../../components/Button/Button"
-import useLogin from "./useLogin"
-import Input from "../../components/Input/Input"
+import { Link } from 'react-router-dom'
+import Button from '../../components/Button/Button'
+import useLogin from './useLogin'
+import Input from '../../components/Input/Input'
 
 const Login: React.FC = () => {
   const { email, setEmail, password, setPassword, handleLogin } = useLogin()

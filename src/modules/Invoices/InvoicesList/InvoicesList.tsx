@@ -2,8 +2,8 @@ import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { BanknotesIcon, ChevronUpDownIcon, PencilSquareIcon, TrashIcon, UserPlusIcon } from '@heroicons/react/20/solid'
 import cx from 'classnames'
-import useClientList from "./useInvoicesList"
 import Button from '../../../components/Button/Button'
+import useClientList from './useInvoicesList'
 
 const ProductList: React.FC = () => {
   const { 

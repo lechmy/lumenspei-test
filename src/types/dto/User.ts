@@ -1,5 +1,5 @@
-import { STATUS } from "../../enums/common";
-import { USER_ROLE } from "../../enums/user";
+import { STATUS } from '../../enums/common'
+import { USER_ROLE } from '../../enums/user'
 
 export interface UserDto {
   id?: string,

@@ -1,11 +1,11 @@
-import { useState } from "react"
-import { PRODUCT_TYPE } from "../../../enums/product"
-import { ProductDetailsProps } from "../../../types/props/ProductDetailsProps"
-import { ProductDto } from "../../../types/dto/Products"
-import { useNavigate } from "react-router-dom"
-import { emptyProduct } from "../../../constants/product"
-import { useMutation } from "react-query"
-import { deleteProduct } from "../../../services/Product"
+import { useState } from 'react'
+import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
+import { PRODUCT_TYPE } from '../../../enums/product'
+import { ProductDetailsProps } from '../../../types/props/ProductDetailsProps'
+import { ProductDto } from '../../../types/dto/Products'
+import { emptyProduct } from '../../../constants/product'
+import { deleteProduct } from '../../../services/Product'
 
 const useProductDetails = (props: ProductDetailsProps) => {
   const { canEdit, product, onSubmit } = props
@@ -22,12 +22,12 @@ const useProductDetails = (props: ProductDetailsProps) => {
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const updatedValue = {[e.target.name]:e.target.value};
+    const updatedValue = {[e.target.name]:e.target.value}
 
     setCurentProduct(curentProduct => ({
       ...curentProduct,
       ...updatedValue
-    }));
+    }))
   }
 
   const handleCancel = () => {

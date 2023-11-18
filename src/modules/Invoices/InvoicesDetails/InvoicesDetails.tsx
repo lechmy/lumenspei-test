@@ -90,7 +90,7 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
                     wrapperClassName="block w-full"
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     selected={new Date(invoice?.issueDate)}
-                    onChange={(value: string) => handleDateChange('issueDate', value)}
+                    onChange={(value) => handleDateChange('issueDate', value)}
                   />
                 </div>
               </div>
@@ -106,7 +106,7 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
                     wrapperClassName="block w-full"
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     selected={new Date(invoice?.arrivalDate)}
-                    onChange={(value: string) => handleDateChange('arrivalDate', value)}
+                    onChange={(value) => handleDateChange('arrivalDate', value)}
                   />
                 </div>
               </div>
@@ -122,7 +122,7 @@ const InvoicesDetails: React.FC<InvoicesDetailsProps> = (props) => {
                     wrapperClassName="block w-full"
                     className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     selected={new Date(invoice?.paymentDate)}
-                    onChange={(value: string) => handleDateChange('paymentDate', value)}
+                    onChange={(value) => handleDateChange('paymentDate', value)}
                   />
                 </div>
               </div>

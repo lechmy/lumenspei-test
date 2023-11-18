@@ -1,5 +1,5 @@
-import InvoicesDetails from "../InvoicesDetails/InvoicesDetails"
-import useInvoicesNew from "./useInvoicesNew"
+import InvoicesDetails from '../InvoicesDetails/InvoicesDetails'
+import useInvoicesNew from './useInvoicesNew'
 
 const InvoicesNew: React.FC = () => {
   const { onSubmit } = useInvoicesNew()

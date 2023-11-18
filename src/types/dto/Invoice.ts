@@ -1,4 +1,4 @@
-import { INVOICE_STATUS, PAYMENT_METHOD } from "../../enums/Invoices";
+import { INVOICE_STATUS, PAYMENT_METHOD } from '../../enums/Invoices'
 
 export interface InvoiceDto {
   id: string,

@@ -1,10 +1,9 @@
-import { useMutation, useQuery } from "react-query"
-import { editClient } from "../../../services/Client"
-import { useState } from "react"
-import { UserDto } from "../../../types/dto/User"
-
-import { useParams, useSearchParams } from "react-router-dom"
-import { defaultClient } from "../../../constants/user"
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useMutation } from 'react-query'
+import { editClient } from '../../../services/Client'
+import { UserDto } from '../../../types/dto/User'
+import { defaultClient } from '../../../constants/user'
 
 const useClientEdit = () => {
   const { id } = useParams ()

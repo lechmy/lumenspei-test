@@ -1,11 +1,11 @@
 import { useMutation, useQuery } from 'react-query'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { defaultInvoice, invoiceItemID } from '../../../constants/invoice'
+import { invoiceItemID } from '../../../constants/invoice'
 import { editInvoice, getInvoice } from '../../../services/Invoice'
 import { InvoiceModel } from '../../../types/model/Invoice'
 import { parseFormData } from '../../../utility/form'
-import { InvoiceDto } from '../../../types/dto/Invoice'
+
 
 const useInvoicesEdit = () => {
   const { id } = useParams ()
@@ -15,6 +15,7 @@ const useInvoicesEdit = () => {
   // const query = useQuery(['editClient'], () => getClient(id).then(data => setClient(data)))
 
   useQuery(['invoices', id], () => getInvoice(id || ''), {
+    // @ts-ignore
     onSuccess: (data) => setInvoice(invoice => ({...invoice, ...data.data}))
   })
 

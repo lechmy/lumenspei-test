@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const useNewPassword = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [newPassword, setNewPassword] = useState<string>('')
   const [repeatedPassword, setRepeatedPassword] = useState<string>('')
@@ -11,8 +11,8 @@ const useNewPassword = () => {
     if(newPassword !== repeatedPassword || newPassword === '') {
       return false
     }
-    navigate('/', { replace: true });
-  };
+    navigate('/', { replace: true })
+  }
 
   return {
     newPassword,

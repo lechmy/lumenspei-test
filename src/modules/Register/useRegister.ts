@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const useRegister = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
@@ -11,8 +11,8 @@ const useRegister = () => {
   const [repeatPassword, setRepeatPassword] = useState<string>('')
 
   const handleRegister = async () => {
-    navigate('/auth/login', { replace: true });
-  };
+    navigate('/auth/login', { replace: true })
+  }
 
   return {
     firstName,
